@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اتقان اللغة التركية</title>
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+/>
+    <link rel="stylesheet" href="./مجلد جديد/style index.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    
+
+    <style>
+      *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none ;
+    scroll-behavior: smooth;
+    font-family: 'poppins' , sans-serif;
+}
+
+:root {
+    --primary-color: #fff ;
+    --secondary-color: #333 ;
+    --main-color: rgb(27, 161, 179) ;
+}
+
+.dark-mode {
+    --primary-color: #223035 ;
+    --secondary-color: #f5f8fa ;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden; 
+}
+
+body {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+   overflow-x: hidden; 
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  /*  padding: 20px 7%; */
+  padding: 2rem 7%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+     z-index: 100; 
+     transition: .5s;
+}
+.header.sticky {
+  background: var(--primary-color);  
+  box-shadow: 0 .1rem 1rem var(--secondary-color);
+}
+
+.logo {
+   /* font-size: 25px; */
+   font-size: 2.5rem;
+    color: var(--main-color);
+    text-decoration: none;
+    font-weight: 600;
+    cursor: default;
+    margin-right: auto;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+}
+
+.navbar a {
+    position: relative; 
+    display: inline-block; 
+  /*  font-size: 19px; */
+  font-size: 1.7rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+   /* margin-right: 15px;*/
+   margin-right: 2rem;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+}
+.header.sticky .navbar a {
+    color: var(--main-color);
+}
+.header.sticky .navbar a.active {
+    color: var(--secondary-color);
+}
+.navbar a.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: .2rem;
+    background: #ffffff;
+}
+.header.sticky .navbar a::before {
+    background: var(--secondary-color);
+    opacity: .7;
+}
+.toggle {
+    display: flex;
+    margin-top: 1px;
+    cursor: pointer;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 3.5s;   
+}
+
+.toggle .toggle-icon {
+    font-size: 2.4rem;
+    color: #fff;
+}
+.header.sticky .toggle i {
+    color: var(--main-color);
+    opacity: .9;
+} 
+
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--secondary-color);
+    display: none;
+}
+
+section {
+    min-height: 100vh;
+    padding: 10rem 7% 2rem;
+}
+.home {
+    display: flex;
+    align-items: center;
+   /* padding: 60px 7% 0;
+    width: 100%;
+    height: 100vh;*/
+}
+
+.home .home-content {
+    max-width: 44rem;
+}
+
+.home-content h1{
+    word-spacing: 10px;
+    color: var(--main-color);
+   /* margin-top: 75px;
+    font-size: 32px; */
+   font-size: 4.6rem;
+   font-weight: 700;
+   margin-bottom: .3rem;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+    animation-delay: .7s;
+}
+
+.home-content p {
+    font-weight: 900;
+    font-size: 3rem;
+    opacity: 0; 
+    animation: slideLeft 1s ease forwards;
+    animation-delay: .7s;
+}
+
+.social-media a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background: transparent;
+    border: .2rem solid var(--main-color);
+    border-radius: 50%;
+    box-shadow: 0 .2rem .5rem rgba(0, 0, 0, .2);
+    font-size: 2rem;
+    color: var(--main-color);
+    text-decoration: none;
+    margin: 2.5rem 1.5rem 3rem 0;
+    transition: .5s ease;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+}
+
+.social-media a:hover {
+    background: var(--main-color);
+    color: #fff;
+}
+
+.home .profession-container {
+   position: absolute;
+   top: 50%;
+   right: 0;
+   transform: translateY(-50%);
+   width: 768px;
+   height: 768px;
+   overflow: hidden;
+   pointer-events: none;
+}
+
+.home .profession-container .profession-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+   /* width: 100%;
+    height: 100%; */
+    width: 768px;
+    height: 768px;
+    border-radius: 50%;   
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    opacity: 0;
+    animation: slideLeft 1s ease forwards , professionRotate 13s ease-out infinite;
+    animation-delay: 2.5s, 3.5s ;
+}   
+
+.home .profession-box .profession {
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: var(--main-color);
+    transform: rotate(calc(360deg / 4 * var(--i)));
+    transform-origin: 384px;
+    background: var(--primary-color) ;
+     padding: 13px 0;
+}
+
+.home .profession-box .profession:nth-child(1) i {
+    margin-right: 15px;
+}
+
+.home .profession-box .profession:nth-child(2) {
+    padding-bottom: 20px;
+}
+
+.home .profession-box .profession:nth-child(4) {
+    padding-bottom: 20px;
+    
+}
+
+.profession i {
+    font-size: 3.8rem;
+}
+
+.profession h3 {
+    font-size: 3.2rem;
+    line-height: 1;
+    font-weight: 600;
+}
+
+.home .profession-box .circle {
+    width: 72%;
+    height: 72%;
+    border: 3px solid var(--main-color);
+    border-radius: 50%;
+}
+.home .profession-container .overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 384px solid  rgb(27, 161, 179);
+    border-right: 384px solid  rgb(27, 161, 179) ;
+    border-bottom: 384px solid  rgb(27, 161, 179);
+    border-left: 384px solid transparent;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1.5s ;
+}
+
+.home-img img {
+     position: absolute;
+     bottom: 23%;
+     left: 63%;
+    width: 80vh;
+    pointer-events:none ; 
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 2.8s;
+}
+
+span {
+    color: var(--main-color);
+}
+.heading {
+    font-size: 4.5rem;
+    text-align: center;
+}
+.about-content h2 {
+    font-size: 4rem;
+    line-height: 1.2;
+}
+.about-content h3 {
+    font-size: 2.5rem;
+  line-height: 1.7;
+}
+
+.about-contents h2 {
+    font-size: 4rem;
+    line-height: 1.2;
+}
+.about-contents h3 {
+    font-size: 2.5rem;
+  line-height: 1.7;
+}
+
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.about-img {
+    width: 40vw ;
+    position: relative;
+    left: -5%;
+}
+.btn {
+    display: inline-block;
+    padding: 1.2rem 2.8rem;
+    background: var(--main-color);
+    border-radius: .6rem;
+    box-shadow: 0 .2rem .5rem var(--secondary-color);
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    letter-spacing: .1rem;
+    font-weight: 600;
+    border: .2rem solid transparent;
+    transition: .5s ease;
+}
+.btn:hover{
+    background: transparent;
+    color: var(--main-color);
+    border-color: var(--main-color);
+
+}
+.services {
+    min-height: auto ;
+    padding-bottom: 7rem;
+
+}
+.services h2 {
+    margin-bottom: 2rem;
+}
+
+.services .services-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap ;
+    gap: 2rem;
+}
+.services-container .services-box {
+    flex: 1 1 30rem;
+    background: var(--primary-color);
+    padding: 3rem 2rem 4rem;
+    border-radius: 2rem;
+    box-shadow: 0 .1rem .5rem var(--secondary-color);
+    text-align: center;
+    border-top: .6rem solid var(--main-color) ;
+    border-bottom: .6rem solid var(--main-color);
+    transition: .5s ease;
+}
+
+.services-container .services-box:hover {
+   box-shadow: 0 .1rem 2rem var(--secondary-color);
+   transform: scale(1.02);
+}
+
+.services-box i {
+   font-size: 7rem;
+   color: var(--main-color);
+}
+
+.services-box h3 {
+    font-size: 2.8rem ;
+    transition: .5s ease;
+}
+.services-box:hover h3 {
+    color: var(--main-color);
+}
+
+.services-box p {
+    font-size: 1.8rem;
+    margin: 1rem 0 3rem;
+    font-weight: 800;
+}
+
+.testinmonial-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 5rem 1rem;
+}
+
+.testinmonial-container .testinmonial-wrapper {
+    position: relative;
+    max-width: 90rem;
+    width: 100%;
+  padding: 5rem;
+}
+.testinmonial-wrapper .testinmonial-box {
+    padding: 1rem;
+    border-radius: 2rem;
+    overflow: hidden;
+}
+
+.testinmonial-container .testinmonial-slide {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: var(--primary-color);
+    border-radius: 2rem;
+    box-shadow: 0 .1rem .5rem var(--secondary-color);
+    padding: 3rem 5rem;
+    border-top: .8rem solid var(--main-color);
+    border-bottom: .8rem solid var(--main-color);
+
+}
+
+.testinmonial-slide img {
+    width: 14rem;
+    height: 14rem;
+    object-fit: cover;
+    border-radius: 50%;
+    border: .5rem solid var(--primary-color);
+    outline: .5rem solid var(--main-color);
+}
+
+.testinmonial-slide h3 {
+    font-size: 2.7rem;
+     margin: 2rem 0;
+}
+.testinmonial-slide p {
+    font-size: 1.9rem;
+    text-align: center;
+    font-weight: 500;
+}
+.testinmonial-box .swiper-button-next ,
+.testinmonial-box .swiper-button-prev {
+   color: var(--main-color)
+}
+
+.testinmonial-box .swiper-button-next {
+    right: 0;
+}
+
+.testinmonial-box .swiper-button-prev {
+    left: 0;
+}
+
+.testinmonial-box .swiper-pagination-bullet {
+    background: rgba(29, 106, 150, 0.8);
+}
+.testinmonial-box .swiper-pagination-bullet-active {
+   background: var(--main-color);
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem 7%;
+    background-color: var(--main-color);
+}
+
+.footer-text p {
+
+    font-size: 2.6rem;
+    color:var(--primary-color);
+
+}
+
+.footer-iconTop a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8rem;
+    background: var(--primary-color);
+    border-radius: .8rem;
+    border: .2rem solid var(--main-color);
+    outline: .2rem solid transparent;
+    transition: .5s ease ;
+}
+.footer-iconTop a:hover {
+     outline-color:var(--primary-color) ;
+}
+.footer-iconTop a i {
+    font-size: 2.4rem;
+    color: #333;
+}
+
+@keyframes slideRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes professionRotate {
+    0%,20% {
+        transform: rotate(0deg);
+    }
+    25%,45% {
+        transform: rotate(-90deg);
+    }
+    50%,70% {
+        transform: rotate(-180deg);
+    }
+    75%,95% {
+        transform: rotate(-270deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+
+@media (max-width: 1200px) {
+    
+     html {
+        font-size: 55%;
+    }
+
+    .home .profession-container {
+        height: 85.8rem;
+    }
+    
+    .home .profession-container .profession-box {
+        right: -12rem;
+        height: 85.8rem;
+    }
+
+    .home .profession-container .overlay {
+        right: -9rem;
+    }
+
+ }
+
+    @media (max-width: 1024px) {
+        .header {
+            padding: 2rem 3%;
+        }
+        section {
+            padding: 10rem 3% 2rem;
+        }
+        .home .profession-container .profession-box {
+            right: -22rem;
+        }
+        .home .profession-container .overlay {
+            right: -15rem;
+
+        }
+    }
+
+    @media (max-width: 991px) {
+        .navbar a:nth-child(1),
+        .navbar a:nth-child(2) {
+            color: var(--main-color);
+        }
+
+        .navbar a.active::before {
+            background: var(--main-color);
+            opacity: .7;
+        }
+
+        .home .home-content {
+            max-width: 50rem;
+        }
+        .home .profession-container .profession-box {
+            right: -45rem;
+        }
+        .home .profession-container .overlay {
+            right: -39.5rem;
+        }
+        .home-img img {
+            display: none;
+        }
+
+        .services {
+            padding-bottom: 7rem;
+        }
+
+        .about {
+            min-height: auto;
+        }
+        .footer {
+            padding: 2rem 3%;
+        }
+    }
+    @media (max-width: 768px) {
+    #menu-icon {
+        display: block;
+    }      
+    
+    .toggle  {
+        position: absolute;
+        right: 7rem;
+        font-size: 2.6rem;
+        margin-bottom: .1rem;
+    }
+    .toggle .toggle-icon {
+        color: var(--secondary-color);
+    }
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 3%;
+        background: var(--primary-color);
+        border-top: .1rem solid rgba(0, 0, 0, .2);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        display: none;
+    }
+    .navbar.active {
+        display: block;
+    }
+    .navbar a {
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+        color: var(--secondary-color);
+    }
+    .navbar a:nth-child(1),
+    .navbar a:nth-child(2) {
+        color: var(--secondary-color);
+    }
+
+    .navbar a.active {
+        color: var(--main-color);
+    }
+    .navbar a::before {
+        display: none;
+    }
+
+    .home {
+        padding: 0 3% 23rem ;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .home-content h3 {
+        font-size: 2.6rem;
+    }
+
+    .home-content h1 {
+        font-size: 5rem;
+
+    }
+
+    .home-content .social-media a {
+        margin: 2.5rem .75rem 3rem;
+    }
+
+    .home .profession-container {
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .home .profession-container .profession-box {
+        position: fixed;
+        top: 60%;
+        left: 0;
+        border-radius: 0;
+        width: 100%;
+    }
+
+    .home .profession-box .profession {
+        padding: 0 13px ;
+        left: auto;
+        transform-origin: 0;
+
+    }
+    .home .profession-box .profession:nth-child(1){
+        transform: rotate(-90deg) translate(-70px, -255px);
+    }
+
+    .home .profession-box .profession:nth-child(2){
+        transform: rotate(1deg) translate(5px, -335px);
+    }
+    .home .profession-box .profession:nth-child(3){
+        transform: rotate(90deg) translate(-80px, -430px);
+    }
+    .home .profession-box .profession:nth-child(4){
+        transform: rotate(180deg) translate(-200px, -335px);
+
+    }
+
+    .home .profession-box .circle {
+        position: fixed;
+        width: 670px;
+        height: 670px;
+        z-index: -1;
+    }
+
+    .home .profession-container .overlay {
+        position: fixed;
+            border-top: 384px solid  transparent;
+            border-right: 384px solid var(--main-color) ;
+            border-bottom: 384px solid  rgb(27, 161, 179);
+            border-left: 384px solid var(--main-color);
+          top: 25rem;
+        left: 0;
+        right:0;
+        transform: rotate(50deg) translate(50%,-50%) scaleY(3);
+        border-width: 42.9rem; 
+    }
+    .about {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .about-content h2 {
+        text-align: center;
+    }
+    .about-img img {
+       width: 70vw;
+       margin-top: -2rem;
+       margin-left: -6rem;
+    }
+
+    .services h2 {
+        margin-bottom: 3rem;
+    }
+
+    .testinmonial-container .testinmonial-wrapper {
+        padding: 5rem 0;
+    }
+    .testinmonial-container .testinmonial-slide {
+        padding: 3rem 2rem;
+    }
+    .testinmonial-box .swiper-button-next ,
+    .testinmonial-box .swiper-button-prev {
+        display: none;
+
+    }
+}  
+
+@media (max-width: 500px) {
+   html {
+    font-size: 50%;
+   }
+   .toggle i {
+    right: 6rem;
+   }
+
+   .home {
+    padding: 0 3% 30rem;
+   }
+    
+    .home .profession-box .profession:nth-child(1) {
+        transform: rotate(-90deg) translate(-70px, -260px);
+    }
+    .home .profession-box .profession:nth-child(2) {
+        transform: rotate(0deg) translate(5px, -335px);
+    }
+    .home .profession-box .profession:nth-child(3) {
+        transform: rotate(90deg) translate(-70px, -400px);
+    }
+    .home .profession-box .profession:nth-child(4) {
+        transform: rotate(178deg) translate(-170px, -335px);
+    }
+
+    .home .profession-container .overlay {
+        position: fixed;
+            border-top: 384px solid  transparent;
+            border-right: 384px solid var(--main-color) ;
+            border-bottom: 384px solid  rgb(27, 161, 179);
+            border-left: 384px solid var(--main-color);
+          top: 40rem;
+        left: 0;
+        right:0;
+        transform: rotate(50deg) translate(50%,-50%) scaleY(3);
+        border-width: 31.9rem; 
+    }
+    
+}
+@media ( max-width: 400px) {
+    .about-img img {
+        width: 90vw;
+        position: relative;
+        margin: auto;
+        left: -70px;
+    }
+    .about {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .about-contents  {
+        text-align: center;
+        margin-top: -90px;
+    }
+
+    
+
+    .home .home-content h1 {
+        margin-top: 50px;
+    }
+
+    .home .profession-box {
+        margin-top: 40px;
+    }
+    .home .profession-box .profession:nth-child(1) {
+        transform: rotate(-90deg) translate(-70px, -260px);
+    }
+    .home .profession-box .profession:nth-child(2) {
+        transform: rotate(0deg) translate(5px, -335px);
+    }
+    .home .profession-box .profession:nth-child(3) {
+        transform: rotate(90deg) translate(-70px, -400px);
+    }
+    .home .profession-box .profession:nth-child(4) {
+        transform: rotate(178deg) translate(-170px, -335px);
+    }
+
+    .home .profession-container .overlay {
+        position: fixed;
+            border-top: 384px solid  transparent;
+            border-right: 384px solid var(--main-color) ;
+            border-bottom: 384px solid  rgb(27, 161, 179);
+            border-left: 384px solid var(--main-color);
+          top: 40rem;
+        left: 0;
+        right:0;
+        transform: rotate(50deg) translate(50%,-50%) scaleY(3);
+        border-width: 24.9rem; 
+    }
+
+    .footer {
+        flex-direction: column-reverse;
+    }
+
+    .footer p {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+}
+@media (max-width: 365px) {
+    .about-img img {
+        width: 90vw;
+        position: relative;
+        margin: auto;
+        left: -70px;
+    }
+
+    .home .home-content h1 {
+        margin-top: 70px;
+    }
+
+    .home .profession-box .profession:nth-child(1) {
+        transform: rotate(-90deg) translate(-70px, -260px);
+    }
+    .home .profession-box .profession:nth-child(2) {
+        transform: rotate(0deg) translate(5px, -335px);
+    }
+    .home .profession-box .profession:nth-child(3) {
+        transform: rotate(90deg) translate(-70px, -400px);
+    }
+    .home .profession-box .profession:nth-child(4) {
+        transform: rotate(178deg) translate(-170px, -335px);
+    }
+
+    .home .profession-container .overlay {
+        position: fixed;
+            border-top: 384px solid  transparent;
+            border-right: 384px solid var(--main-color) ;
+            border-bottom: 384px solid  rgb(27, 161, 179);
+            border-left: 384px solid var(--main-color);
+          top: 40rem;
+        left: 0;
+        right:0;
+        transform: rotate(50deg) translate(50%,-50%) scaleY(3);
+        border-width: 22.9rem; 
+    }
+
+    .footer {
+        flex-direction: column-reverse;
+    }
+
+    .footer p {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+}
+
+@media (max-width: 700px) {
+    .home .profession-container .overlay {
+        position: fixed;
+            border-top: 384px solid  transparent;
+            border-right: 384px solid transparent;
+            border-bottom: 384px solid  transparent;
+            border-left: 384px solid transparent;
+          top: 40rem;
+        left: 0;
+        right:0;
+    }
+
+    .home .home-content h1 {
+        margin-top: 50px;
+    }
+
+    .home .profession-box {
+        margin-top: 40px;
+    }
+
+}
+    
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <a href="*" class="logo"
+        ><i class="bx bx-book-bookmark"></i> Türk Dili ve Edebiyatı</a
+      >
+
+      <nav class="navbar">
+        <a  href="#home" style="--i:2;" class="active"> الصفحة الرئسية</a>
+        <a href="#about" style="--i:3;">هدفنا</a>
+        <a  href="#services" style="--i:4;">الدروس </a>
+        <a  href="#testinmonial-container" style="--i:5;" > القائمين على المشروع</a>
+        <a href="#kim" style="--i:6;">من نحن</a>
+        <a  href="#footer" style="--i:7;">التواصل معنا </a>
+      </nav>
+      <div class="toggle">
+        <i class="bx bx-moon toggle-icon"></i>
+      </div>  
+      <div class="bx bx-menu" id="menu-icon">
+
+      </div>
+    </header>
+
+    <section class="home" id="home">
+      <div class="home-content">
+        <h1>  إتقان اللغة التركية </h1>
+        <p>
+        شرح مقررات اللغة التركية لطلاب جامعة أناضولو  و حل أسئلة الدورات و تقديم أفضل الخلاصات و النقاط الهامة  
+        </p>
+        <div class="social-media" >
+            <a href="https://chat.whatsapp.com/GzCPZRykFfGHoVva19sqoh
+            " style="--i:8;"><i class='bx bxl-whatsapp'></i></a>
+            <a href="https://t.me/RandaTurkdili1" 
+            style="--i:7;"><i class='bx bxl-telegram'></i></a>
+        </div>
+      </div>
+
+      <div class="profession-container">
+        <div class="profession-box">
+          <div class="profession" style="--i:0;">
+            <i class='bx bx-microphone'></i>
+            <h3> دروس مباشرة</h3> </div>
+            <div class="profession"style="--i:1;">
+              <i class='bx bxs-book-open'></i>
+              <h3> ملخص عربي/تركي</h3> </div>
+              <div class="profession"style="--i:2;">
+                <i class='bx bxs-video'></i>
+                <h3>دروس مسجلة</h3> </div>
+                <div class="profession"style="--i:3;">
+                  <i class='bx bx-book-content'></i>
+                  <h3>شرح أسئلة الدورات</h3> </div>
+
+            <div class="circle"></div>      
+        </div>
+
+        <div class="overlay"></div>
+      </div>
+      <div class="home-img">
+        <img src="img1-removebg-preview.png" >
+      </div>
+    </section> 
+     
+    <section class="about" id="about">
+      <div class="about-img">
+        <img src="./photo_5789692103889108371_x-removebg-preview.png" alt="">
+      </div>
+
+      <div class="about-content">
+         <h2 class="heading">ما هو <span>هدفنا</span></h2>
+        <h3 dir="rtl">- كسر حاجز الرعب والخوف من هذه المادة التي توقف نجاح الكثيرين عليها . </h3>
+        <h3 dir="rtl">- تذليل هذه المادة لإمكانية فهمها والتعلم منها وتقديمها.
+        </h3>
+        <h3 dir="rtl">- مناقشة وحل الأسئلة السابقة بعدة طرق مع فهم محتوياتها مما يؤهلنا لتقديم الامتحان بسهولة.
+        </h3>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <h2 class="heading"> محتوى الدروس</h2>
+      <h2 class="heading"> <span>Türk Dili ve Edebiyatı 1</span></h2>
+       <div class="services-container">
+        <div class="services-box">
+          <i class='bx bx-book-bookmark'></i>
+          <h3>ملخصات الوحدة</h3>
+          <p>تلخيصات الوحدات باللغتين العربية و التركية و التركيز على أهم النقاط و الفقرات </p>
+           <a href="./ozet.html" class="btn"> اضغط هدفنا</a>
+        </div>
+        <div class="services-box">
+          <i class='bx bx-video-recording'></i>
+          <h3>فيديوهات الوحدة</h3>
+          <p>تسجيل الدروس المباشرة التفاعلية لكل وحدة التي تشرح كل محتوى الكتاب</p>
+          <a href="./video.html" class="btn"> اضغط هدفنا</a>
+        </div>
+        <div class="services-box">
+          <i class='bx bx-message-square-edit'></i>
+          <h3>أسئلة الوحدة</h3>
+          <p> جمع كل الأسئلة المتعلقة بالوحدات على شكل ملف بي دي اف ثم شرح كل سؤال بتسجيل صوتي</p>
+           <a href="./Sorular.html" class="btn"> اضغط هدفنا</a>
+        </div>
+
+        <h2 class="heading"> <span>Türk Dili ve Edebiyatı 2</span></h2>
+        <div class="services-container">
+         <div class="services-box">
+           <i class='bx bx-book-bookmark'></i>
+           <h3>ملخصات الوحدة</h3>
+           <p>تلخيصات الوحدات باللغتين العربية و التركية و التركيز على أهم النقاط و الفقرات </p>
+            <a href="#" class="btn">  سيتوفر قريباً</a>
+         </div>
+         <div class="services-box">
+           <i class='bx bx-video-recording'></i>
+           <h3>فيديوهات الوحدة</h3>
+           <p>تسجيل الدروس المباشرة التفاعلية لكل وحدة التي تشرح كل محتوى الكتاب</p>
+           <a href="#" class="btn">  سيتوفر قريباً</a>
+         </div>
+         <div class="services-box">
+           <i class='bx bx-message-square-edit'></i>
+           <h3>أسئلة الوحدة</h3>
+           <p> جمع كل الأسئلة المتعلقة بالوحدات على شكل ملف بي دي اف ثم شرح كل سؤال بتسجيل صوتي</p>
+           <a href="#" class="btn">  سيتوفر قريباً</a>
+         </div>
+
+       </div>   
+
+    </section>
+          <section class="testinmonial-container" id="testinmonial-container" >
+       <div class="testinmonial-container" id="testinmonial-container">
+         <h2 class="heading"> القائمين على<span> المشروع</span></h2>
+
+         <div class="testinmonial-wrapper">
+          <div class="testinmonial-box mySwiper">
+            <div class="testinmonial-content swiper-wrapper">
+              <div class="testinmonial-slide swiper-slide">
+                <img src="./photo_5867078652829741651_x.jpg" alt="">
+                <h3>الآستاذ ميسرة الصيداوي</h3>
+                <p> المسؤول عن التأسيس و الاشراف العام عن الكروبات و استفسارات الطلاب</p>
+              </div>
+            <div class="testinmonial-slide swiper-slide">
+              <img src="./photo_5869364004927943238_x.jpg" alt="">
+              <h3> الآنسة رندة حجازي </h3>
+              <p> المسؤولة عن شرح و تبسيط مادة اللغة التركية و آدابها لطلاب جامعة أناضولو </p>
+            </div>
+            <div class="testinmonial-slide swiper-slide">
+              <img src="./photo_5869715861533733359_x.jpg" alt="">
+              <h3>  المبرمجة سارة حلاق </h3>
+              <p> المسؤولة عن برمجة الموقع و أدارته و تقديم أفضل جودة</p>
+            </div>
+          </div>
+            <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+
+          </div>
+         </div>
+       </div>
+
+       <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+      </section>
+
+       <section class="about" id="kim">
+        <div class="about-img">
+          <img src="./photo_5789692103889108335_x-removebg-preview.png" alt="">
+        </div>
+  
+        <div class="about-contents">
+           <h2 class="heading"> من <span >نحن   </span></h2>
+          <h3 dir="rtl">تم إنشاء المجموعة التعليمية عبر الواتس مع مجموعة تليغرام مرافقة منذ عام 2021م  بهدف جمع المادة والقدرة على تقديمها والتي أفرزت خلاصة التجارب الطلابية عبر عمل تطوعي طلابي منظم والذي تحول لمشروع نجاح حتى تاريخ اليوم بفضل الله وتوفيقه.</h3>
+          <br> <br><br> <br>
+          <h2 class="heading"> التواصل <span >معنا</span></h2>
+
+          <h3 dir="rtl" id="footer">رقم الأستاذ ميسرة الصيداوي:   05551103987 </h3>
+       
+        </div>
+      </section>
+        <footer class="footer" >
+          <div class="footer-text">
+          <p>مع تمنياتنا لكم بالتوفيق و النجاح الدائم</p>      
+    </div>
+          <div class="footer-iconTop">
+           <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+          </div>
+        </footer>
+
+
+
+    <script src="script.js"></script>
+  </body>
+</html>
